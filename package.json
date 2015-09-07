@@ -1,0 +1,28 @@
+{
+  "name": "RecAct-Flux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server public",
+    "clean": "rm -rf public && mkdir public && mkdir public/js",
+    "prebuild": "npm run clean",
+    "build": "npm run build-js && npm run build-css && npm run build-html",
+    "watch": "$(npm bin)/watchify src/js/index.js -o public/js/index.js -t [ babelify --stage 0 ]",
+    "build-js": "$(npm bin)/browserify src/js/index.js -o public/js/index.js -t [ babelify --stage 0 ]",
+    "build-css": "cp -r src/css public/css",
+    "build-html": "cp src/index.html public/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.0.1",
+    "watchify": "^3.4.0"
+  },
+  "dependencies": {
+    "react": "^0.13.3"
+  }
+}
