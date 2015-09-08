@@ -12,20 +12,11 @@ class CountStore extends EventEmitter {
 
   init () {
     this.count = 0;
-
-    console.log('>>>>>>>> init?');
-    console.log(this.count);
-
     this.emit('change');
   }
 
   increment () {
     this.count += 1;
-    this.emit('change');
-  }
-
-  decrement () {
-    this.count -= 1;
     this.emit('change');
   }
 
@@ -46,9 +37,6 @@ Dispatcher.register((action) => {
     break;
   case 'INCREMENT':
     COUNT_STORE.increment();
-    break;
-  case 'DECREMENT':
-    COUNT_STORE.decrement();
     break;
   }
 });

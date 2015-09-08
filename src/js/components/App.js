@@ -24,17 +24,12 @@ class App extends React.Component {
       <div>
         <h1>Count : {this.state.count}</h1>
         <button onClick={::this._increment}>++</button>
-        <button onClick={::this._decrement}>--</button>
       </div>
     );
   }
 
   _increment () {
     CountActions.increment();
-  }
-
-  _decrement () {
-    CountActions.decrement();
   }
 
   _onChange () {
