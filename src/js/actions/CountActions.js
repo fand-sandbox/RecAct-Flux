@@ -8,10 +8,6 @@ const actions = {
     Dispatcher.dispatch({type: 'INCREMENT'});
   },
 
-  decrement: () => {
-    Dispatcher.dispatch({type: 'DECREMENT'});
-  },
-
 };
 
 export default actions;
