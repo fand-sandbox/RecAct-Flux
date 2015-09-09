@@ -11,20 +11,24 @@ class LoggedDispatcher extends Dispatcher {
 
   dispatch (event) {
     this.eventStore.push({
-      time  : Date.now(),
+      time  : Date.now(),  // 時刻を記録
       event : event,
     });
     super.dispatch(event);
   }
 
   replay (time) {
-    super.dispatch({ type: 'INIT' });  // 初期状態に戻す
 
+    // 初期状態に戻す
+    super.dispatch({ type: 'INIT' });
+
+    // 指定時刻以前のイベントを発行
     this.eventStore.forEach((e) => {
       if (e.time < time) {
-        super.dispatch(e.event);  // 指定時刻以前のイベントを発行
+        super.dispatch(e.event);
       }
     });
+
   }
 
 }
